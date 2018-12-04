@@ -1,0 +1,100 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block Bhead %}
+   <link rel="stylesheet" href="{% static 'css/miCatalogo.css' %}">
+{% endblock%}
+
+{%block body%}
+<br><br>
+	<ul class="nav nav-tabs row mt-3 mx-5">
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo_p' %}" class="nav-link {{activo.0}}"  id="a1">Distorsion</a>
+        </li>
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Chorus'%}" class="nav-link  {{activo.7}} " id="a1">Chorus</a>
+        </li>
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Reverb'%}" class="nav-link {{activo.3}} " id="a1">Reverb</a>
+        </li>
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Overdrive'%}" class="nav-link {{activo.2}} " id="a1">Overdrive</a>
+        </li>
+</ul>
+<ul class="nav nav-tabs row mt-3 mx-5">
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Phaser' %}" class="nav-link {{activo.4}} " id="a1">Phaser</a>
+        </li>
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Flanger'%}" class="nav-link {{activo.5}} " id="a1">Flanger</a>
+        </li>
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Wah'%}" class="nav-link {{activo.6}} " id="a1">Wah</a>
+        </li>
+        <li class="nav-item col-3 text-center">
+            <a href="{% url 'catalogo' 'Delay'%}" class="nav-link {{activo.1}} " id="a1">Delay</a>
+        </li>
+</ul>
+
+
+    {% if hay_pedales and hay_efecto %}
+    <h2 class="bg-warning text-danger mt-3 text-center p-2 mx-5">Efecto de {{efecto}}</h2>
+    {% for p in pedales  %}
+    <div class="container_sim">
+    <div class="row publicacion my-4 mx-5">
+        <div class="col-12">
+            <div class="row titulo">
+                 <h3 class="text-center col-12 ">{{p.nombre_pedal}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="row my-1">
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Marca:</p><p class="psenter"> {{p.marca}}</p>
+                        </div>
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Modelo:</p><p class="psenter"> {{p.modelo}}</p>
+                        </div> 
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Precio:</p><p class="psenter"> ${{p.precio}}</p>
+                        </div> 
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Fecha de publicacion:</p><p class="psenter"> {{p.fecha_publicacion}}</p>
+                        </div> 
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Autor:</p><p class="psenter">{{p.autor_publicacion}}</p>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <p class="enter">Descripcion:</p><p>{{p.descripcion_pedal}}</p>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="row my-1">
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <div class="text-center">
+                                <img src="{{ p.imgPedal.url }}" class="img-responsive" width="250" height="250" >
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <a href="{% url 'publicacion:mostrar_publicacion' p.id %}"  class="btn btn-block btn-primary font-weight-bold">Ver Publicación</a>
+                        </div>  
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>  
+    {% endfor %}
+    {% else %}
+    <h2 class="bg-warning text-danger mt-3 text-center p-2 mx-5">No se encuentran publicaciones de este Efecto</h2>
+    {% endif %}
+ <div class="jumbotron  mx-5">
+  <h1 class="display-4"><a name="funcion"> </a>ChePedales!</h1>
+  <p class="lead">El propósito y razón de ser de nuestra pagina es proporcionar un espacio donde personas de diferentes lugares del mundo puedan compartir sus conocimientos y experiencias con los pedales.</p>
+  <hr class="my-4">
+  <p>¿Ya compartiste los tuyos? ¿Qué esperas?.</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'publicacion:publicacion_registrar' %}" role="button">Publicar</a>
+</div>          
+{%endblock%}

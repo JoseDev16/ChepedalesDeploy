@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block Bhead %}
+   <link rel="stylesheet" href="{% static 'css/miCatalogo.css' %}">
+{% endblock%}
+{%block body%}
+<br><br>
+<h1 align="center">Top 10 de publicaciones mejor calificadas</h1>
+{% if topPu %}
+
+
+
+		{% for p in topPu %}
+         
+		<div class="container_sim">
+    	<div class="row publicacion my-4 mx-5">
+        <div class="col-12">
+            <div class="row titulo">
+                 <h3 class="text-center col-12 "><span class="icon-music"></span>   Top {{forloop.counter}}    {{p.nombre_pedal}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="row my-1">
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Marca:</p><p class="psenter"> {{p.marca}}</p>
+                        </div>
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Modelo:</p><p class="psenter"> {{p.modelo}}</p>
+                        </div> 
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Puntaje:</p><p class="psenter"> {{p.puntuacion}}</p>
+                        </div> 
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Fecha de publicacion:</p><p class="psenter"> {{p.fecha_publicacion}}</p>
+                        </div> 
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <p class="enter">Autor:</p><p class="psenter">{{p.autor_publicacion}}</p>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <p class="enter">Descripcion:</p><p>{{p.descripcion_pedal}}</p>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="row my-1">
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <div class="text-center">
+                                <img src="{{ p.imgPedal.url }}" class="img-responsive" width="250" height="250" >
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-4 my-1">
+                            <a href="{% url 'publicacion:mostrar_publicacion' p.id %}"  class="btn btn-block btn-primary font-weight-bold">Ver Publicación</a>
+                        </div>  
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>  
+		
+		{% endfor %}
+
+		{% else %}
+		<h1 class="text-center">No hay publicacion por mostrar</h1>
+
+{% endif %}
+
+	</tbody>
+</table>
+
+{% endblock %}
+
+

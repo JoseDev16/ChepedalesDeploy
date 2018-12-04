@@ -21,21 +21,28 @@ from django.conf import settings
 from django.conf.urls.static import static
 from chepedales import views
 from django.contrib.auth.views import logout_then_login
+from django.contrib.auth.views import LoginView,logout_then_login,LogoutView
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     
 
     path('catalogo/',include('Apps.mainCatalogo.urls')),
     path('publicacion/', include(('Apps.publicacion.urls', 'publicacion'), namespace='publicacion')),
-    path('',logout_then_login,name='logout'),
+    
+    
 
     
     path('administracion/',include('Apps.admSolicitudes.urls')),
      path('top/',include('Apps.top10.urls')),
-    path('', include('Apps.login.urls','registro'),name='registro'),
+    path('/', include('Apps.login.urls','registro'),name='registro'),
     path('logout/',logout_then_login,name='logout'),
+    
+
+
     path('Favoritos/', include('Apps.top10.urls')),
+
 ]
 
 if settings.DEBUG:

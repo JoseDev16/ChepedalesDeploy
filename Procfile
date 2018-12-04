@@ -1,0 +1,1 @@
+web: gunicorn chepedales.wsgi --log-file -

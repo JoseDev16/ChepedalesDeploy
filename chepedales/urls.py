@@ -24,10 +24,12 @@ from django.contrib.auth.views import logout_then_login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/',include('Apps.mainCatalogo.urls')),
+    
 
     path('catalogo/',include('Apps.mainCatalogo.urls')),
     path('publicacion/', include(('Apps.publicacion.urls', 'publicacion'), namespace='publicacion')),
+    path('',logout_then_login,name='logout'),
+
     
     path('administracion/',include('Apps.admSolicitudes.urls')),
      path('top/',include('Apps.top10.urls')),

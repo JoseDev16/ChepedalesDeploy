@@ -76,18 +76,6 @@
 </div>
 </div>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<div class="fb-comments" data-href="{{ request.path }}" data-numposts="5"></div>
-
-
 {% else %}
 	{% csrf_token %}
 
@@ -151,6 +139,58 @@
 	<h1>No se encontró información de este pedal</h1>
 {% endif %}   
 </div>
+{% endblock %}
+
+{% block footer %}
+<div class="col-md-12">
+	<div class="row">
+		<div class="col-md-12">
+			<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+  					var js, fjs = d.getElementsByTagName(s)[0];
+  					if (d.getElementById(id)) return;
+  					js = d.createElement(s); js.id = id;
+  					js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2';
+  					fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				</script>
+				<div class="fb-comments" data-href="https://chepedale.herokuapp.com/{{ request.path }}" data-width="100%" data-numposts="5"></div>
+		</div>
+	</div>
+</div>
+<footer>
+            <div class="row p-3">
+                <div class="col-lg-3" id="a">
+                    <div class="alert alert-dismissible w-100 alert-danger d-inline-block">
+                        <a href="https://www.instagram.com/chepedales/" class="alert-link"><span class="icon-youtube2"></span></a><strong> Instagram</strong>
+                        <p>Mantente al tanto de los videos y contenido para ti.</p>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3" id="b">
+                    <div class="alert alert-dismissible w-100 alert-info d-inline-block ">
+                        <a href="https://www.facebook.com/ChepeDales-575147906223895/" class="alert-link"><span class="icon-facebook"></span></a><strong> Faceebok</strong>
+                        <p class="align-center">Siguenos y comparte con nostros tu pasion.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" id="c">
+                    <div class="alert alert-dismissible w-100 alert-primary d-inline-block">
+                        <a href="#" class="alert-link"><span class="icon-google-plus"></span></a><strong> GooglePlus</strong>
+                        <p>Comparte con la comunidad de musicos del pais.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3"id="d">
+                    <div class="alert alert-dismissible w-100 alert-success d-inline-block">
+                        <a href="https://twitter.com/ChepeDales" class="alert-link"><span class="icon-twitter"></span></a><strong> Twitter</strong>
+                        <p>Esten pendientes, de frases celebres de musicos.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
 {% endblock %}
 
 

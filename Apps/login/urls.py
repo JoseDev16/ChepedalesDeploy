@@ -7,6 +7,6 @@ app_name= "registro"
 
 urlpatterns=[
     #path('accounts/login/',login,{'template_name':'login/login.html'}, name="login"),
-    path('/',login,{'template_name':'login/login.html'}, name="login"),
+    path('',login,{'template_name':'login/login.html'}, name="login"),
     path('registro/',registro.as_view(), name="registro_usuario"),
 ]

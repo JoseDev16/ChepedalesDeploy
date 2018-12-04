@@ -25,7 +25,8 @@ from django.contrib.auth.views import LoginView,logout_then_login,LogoutView
 
 
 urlpatterns = [
-    path('/', admin.site.urls),
+    path('admin', admin.site.urls),
+
     
 
     path('catalogo/',include('Apps.mainCatalogo.urls')),

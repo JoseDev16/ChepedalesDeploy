@@ -7,3 +7,7 @@ def base(request):
 def site_map(request):
 	return render(request,'sitemap.xml')
 
+def robots(request):
+	return render(request,'robots.xml')
+
+

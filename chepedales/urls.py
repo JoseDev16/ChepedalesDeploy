@@ -44,6 +44,7 @@ urlpatterns = [
 
     path('Favoritos/', include('Apps.top10.urls')),
     path('sitemap/', views.site_map,name="site_map"),
+    path('robots.txt/', views.robots,name="robots"),
 
 ]
 

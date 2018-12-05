@@ -46,9 +46,38 @@
             <meta name = "twitter: creator" content = "@Chepedales" />
             <meta name="twitter:title" content="Resenas de pedales para guitarra">
             <meta name="twitter:description" content="Chepedales es una pagina donde cada musico guitarrista puede dar la resena sobre sus pedales.">
-            <meta name="twitter:image" content="https://www.guitarristas.info/foros/como-hacer-pedalera/69891">
+            <meta name="twitter:image" content="https://www.guitarristas.info/foros/como-hacer-pedalera/69891"> 
 
-        {% endblock %}l;
+            <!-- estructura de datos con json-->
+            <script type='application/ld+json'> 
+                {
+                    "@context": "http://www.schema.org",
+                    "@type": "Store",
+                    "name": "Chepedales",
+                    "telephone": "(+503)7700-4165",
+                    "url": "http://chepedale.herokuapp.com",
+                    "priceRange" : "$12 - $20",
+                    "logo": "https://chepedale.herokuapp.com/static/img/logo.PNG",
+                    "image": "https://chepedale.herokuapp.com/static/img/logo.PNG",
+                    "description": "Chepedales es una pagina donde cada musico guitarrista puede dar la resena sobre sus pedales. ",
+                    "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "Chepedales@gmail.com",
+                                "addressLocality": "San Salvador",
+                                "addressRegion": "San Salvador",
+                                "postalCode": "503",
+                                "addressCountry": "El Salavador"
+                                },
+                    "openingHours": "Mo, Tu, We, Th, Fr 08:00-19:00 Sa 12:00-17:00",
+                    "contactPoint": {
+                                        "@type": "ContactPoint",
+                                        "telephone": "(+503)7700-4165",
+                                        "contactType": "customer service"
+                                    }
+                    }
+</script>
+
+        {% endblock %}
 
         
     </head>
